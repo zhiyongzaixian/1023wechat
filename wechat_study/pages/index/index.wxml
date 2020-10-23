@@ -1,7 +1,12 @@
 <view class="indexContainer">
   <image class="avatarImg" src="/static/images/nvsheng.jpg"></image>
   <text class="userName">{{msg}}</text>
-  <view class="goStudy">
-    <text>hello world</text>
+  <!-- 事件绑定 -->
+  <!-- <view class="goStudy" catchtap="handleParent">
+    <text catchtap="handleChild">hello world</text>
+  </view> -->
+
+   <view class="goStudy" catchtap="toLogs">
+    <text >hello world</text>
   </view>
 </view>

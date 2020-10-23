@@ -1,58 +1,31 @@
-// pages/index/index.js
+// pages/logs/logs.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    msg: '初始化测试数据'
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('onLoad() 监听页面加载');
-    // 发请求
-    // debugger;
-    // 数据绑定
-    // console.log(this);
-    // setTimeout(() => {
-    //   // 修改状态数据
-    //   this.setData({
-    //     msg: '修改之后的数据'
-    //   })
-    //   console.log(this.data.msg);// 同步： 修改之后的数据
-    // }, 2000)
 
-  },
-
-  handleParent(){
-    console.log('parent');
-  },
-  handleChild(){
-    console.log('child');
-  },
-
-  // 跳转至logs页面
-  toLogs(){
-    wx.redirectTo({
-      url: '/pages/logs/logs',
-    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    console.log('onReady() 监听页面初次渲染完成');
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('onShow() 监听页面显示');
 
   },
 
@@ -60,7 +33,6 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    console.log('onHide() 监听页面隐藏');
 
   },
 
@@ -68,7 +40,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    console.log('onUnload() 监听页面卸载');
 
   },
 

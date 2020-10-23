@@ -41,6 +41,8 @@ for(let key in data){
 console.log(_this);
 _this.username = 'wade';
 
+console.log(_this.username);
+
 
 
 
