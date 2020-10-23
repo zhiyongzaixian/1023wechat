@@ -6,5 +6,6 @@
     "navigationBarBackgroundColor": "#f0f",
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "atguigu"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

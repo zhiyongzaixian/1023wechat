@@ -5,13 +5,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    msg: '初始化测试数据'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log('onLoad()');
+    console.log(this);
+    setTimeout(() => {
+      // 修改状态数据
+      this.setData({
+        msg: '修改之后的数据'
+      })
+      console.log(this.data.msg);// 同步： 修改之后的数据
+    }, 2000)
 
   },
 
