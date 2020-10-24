@@ -87,7 +87,7 @@
 
 .topItem {
   width: 97%;
-  background: pink;
+  background: #ededed;
 }
 
 .topListSwiper {

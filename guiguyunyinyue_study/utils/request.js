@@ -32,7 +32,7 @@ export default (url, data={}, method='GET') => {
    
    // 2. 执行任务
    wx.request({
-     url: config.mobileHost + url,
+     url: config.host + url,
      data,
      method,
      success: (res) =>{
