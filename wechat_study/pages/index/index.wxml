@@ -2,6 +2,10 @@
   <image wx:if='{{userInfo.avatarUrl}}' class="avatarImg" src="{{userInfo.avatarUrl}}"></image>
   <button wx:else open-type="getUserInfo" bindgetuserinfo='handleGetUserInfo'>获取用户昵称</button>
   <text class="userName">{{userInfo.nickName}}</text>
+
+  <!-- hidden等同于Vue中v-show -->
+  <!-- <text hidden="{{userInfo.nickName}}" class="userName">{{userInfo.nickName}}</text> -->
+
   <!-- 事件绑定 -->
   <!-- <view class="goStudy" catchtap="handleParent">
     <text catchtap="handleChild">hello world</text>
