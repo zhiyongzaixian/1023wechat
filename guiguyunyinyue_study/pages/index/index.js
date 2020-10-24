@@ -21,6 +21,7 @@ Page({
     this.setData({
       bannerList: bannerListData.banners
     })
+    
   },
 
   /**
