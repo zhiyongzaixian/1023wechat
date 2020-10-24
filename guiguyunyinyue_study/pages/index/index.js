@@ -1,11 +1,11 @@
-// pages/index/index.js
+import request from '../../utils/request'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    bannerList: [], // 主页轮播图
   },
 
   /**
@@ -13,15 +13,13 @@ Page({
    */
   onLoad: function (options) {
     // 发送请求
-    wx.request({
-      url: 'http://localhost:3000/banner',
-      data: {type: 2},
-      success: (res) => {
-        console.log('请求成功', res);
-      },
-      fail: (err) => {
-        console.log('请求失败', err);
-      }
+    this.getInitData();
+  },
+  // 封装发送请求的函数
+  async getInitData(){
+    let bannerListData = await request('/banner', {type: 2});
+    this.setData({
+      bannerList: bannerListData.banners
     })
   },
 
