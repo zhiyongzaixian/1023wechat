@@ -7,12 +7,25 @@ Page({
   data: {
     navList: [], // 导航数据
     navId: '', // 导航的标签id
+    videoList: [], // 视频的列表数据
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 判断用户是否登录
+    let userInfo = wx.getStorageSync('userInfo');
+    if(!userInfo){
+      wx.showToast({
+        title: '请先登录',
+        icon: 'none'
+      })
+      wx.redirectTo({
+        url: '/pages/login/login'
+      })
+      return;
+    }
     this.getInitData();
   },
   
@@ -22,6 +35,14 @@ Page({
     this.setData({
       navList: navListData.data.slice(0, 14),
       navId: navListData.data[0].id
+    })
+    
+    
+    // 获取视频列表数据
+    let videoListData = await request('/video/group' , {id: this.data.navId});
+    console.log(videoListData);
+    this.setData({
+      videoList: videoListData.datas
     })
   },
 
