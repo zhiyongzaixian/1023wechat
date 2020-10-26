@@ -7,3 +7,5 @@ console.log(arr.toString()); // 1,2,3,4
 console.log(Object.prototype.toString.call(arr).slice(8, -1));
 let num = 123;
 console.log(Object.prototype.toString.call(num).slice(8, -1));
+
+console.log(Number.prototype);

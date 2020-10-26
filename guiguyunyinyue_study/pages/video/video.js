@@ -27,33 +27,81 @@ Page({
       return;
     }
     this.getInitData();
+    
   },
   
-  // 封装获取初始化的功能函数
+  // 封装获取导航标签的数据功能函数
   async getInitData(){
     let navListData = await request('/video/group/list');
     this.setData({
       navList: navListData.data.slice(0, 14),
       navId: navListData.data[0].id
     })
+  
+    this.getVideoList(this.data.navId);
+  },
+  // 获取视频列表数据
+  async getVideoList(navId){
+    let videoListData = await request('/video/group' , {id: navId});
+    let id = 0;
+    let videoList = videoListData.datas.map(item => {
+      item.id = id++;
+      return item;
+    })
     
-    
-    // 获取视频列表数据
-    let videoListData = await request('/video/group' , {id: this.data.navId});
-    console.log(videoListData);
+    // 关闭消息提示框
+    wx.hideLoading();
     this.setData({
-      videoList: videoListData.datas
+      videoList
     })
   },
 
   // 点击导航的回调
   changeNavId(event){
-    console.log(event);
+    // 提示用户正在加载
+    wx.showLoading({
+      title: '正在加载'
+    })
+    // console.log(event);
     // let navId = event.currentTarget.dataset.id; // data-key=value
     let navId = event.currentTarget.id; // 会自动将number转换成字符串
     this.setData({
-      navId: navId>>>0
+      navId: navId>>>0,
+      videoList: [],
     })
+  
+    this.getVideoList(this.data.navId);
+  },
+  
+  // 点击播放/继续播放的回调
+  handlePlay(event){
+    /*
+    * 问题： 多个视频同时播放
+    * 解决思路：
+    *   1. 在播放当前视频的时候关闭上一个播放的视频
+    *   2. 如何操作关闭视频: videoContext = wx.createVideoContext(vid)
+    *   3. 如何找到上一个播放的视频,并且关闭
+    *     1) 找到上一个上下文对象
+    *     2) 保证两次点击的不是同一个视频再关闭
+    * js设计模式： 单例模式
+    *   1. 始终保持只有一个对象，如果需要创建新的对象会把之前的覆盖掉， 节省内存空间
+    *
+    *
+    * */
+    let vid = event.currentTarget.id;
+  
+  
+    this.vid !== vid && this.videoContext && this.videoContext.stop();
+    // if(this.vid !== vid){
+    //   if(this.videoContext){
+    //     this.videoContext.stop();
+    //   }
+    // }
+    
+    this.vid = vid;
+    this.videoContext = wx.createVideoContext(vid);
+    // this.videoContext.stop();
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
