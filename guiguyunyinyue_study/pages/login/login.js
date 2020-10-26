@@ -79,6 +79,14 @@ Page({
       wx.showToast({
         title: '登录成功'
       })
+      
+      // 将用户的信息存入至本地
+      wx.setStorageSync('userInfo', result.profile);
+      
+      // 跳转至 personal 页面
+      wx.reLaunch({
+        url: '/pages/personal/personal'
+      })
     }else if(result.code === 400){
       wx.showToast({
         title: '手机号不正确',
