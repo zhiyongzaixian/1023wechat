@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5683c999-ccdd-44b8-ba25-2d1c5b617267" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../wechat_study/pages/index/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/../wechat_study/pages/index/index.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../guiguyunyinyue_study/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../guiguyunyinyue_study/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../guiguyunyinyue_study/pages/video/video.js" beforeDir="false" afterPath="$PROJECT_DIR$/../guiguyunyinyue_study/pages/video/video.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../guiguyunyinyue_study/pages/video/video.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/../guiguyunyinyue_study/pages/video/video.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../guiguyunyinyue_study/pages/video/video.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/../guiguyunyinyue_study/pages/video/video.wxss" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,40 +20,51 @@
     <session id="-987780025">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="html" value="1" />
-          <entry key="js" value="1" />
+          <entry key="js" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="1" />
-          <entry key="JavaScript" value="1" />
+          <entry key="JavaScript" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="7" />
-          <entry key="js" value="595" />
+          <entry key="js" value="775" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="7" />
-          <entry key="JavaScript" value="595" />
+          <entry key="JavaScript" value="775" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/02. 位移运算符/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -67,6 +81,7 @@
       <list>
         <option value="$PROJECT_DIR$/01. 数据劫持代理/index.html" />
         <option value="$PROJECT_DIR$/01. 数据劫持代理/index.js" />
+        <option value="$PROJECT_DIR$/02. 位移运算符/index.js" />
       </list>
     </option>
   </component>
@@ -76,7 +91,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
     <option name="y" value="-10" />
     <option name="width" value="1380" />
@@ -98,11 +113,6 @@
               <item name="扩展" type="b2602c69:ProjectViewProjectNode" />
               <item name="扩展" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="扩展" type="b2602c69:ProjectViewProjectNode" />
-              <item name="扩展" type="462c0819:PsiDirectoryNode" />
-              <item name="01. 数据劫持代理" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -112,7 +122,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../guiguyunyinyue_study" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="C:/Program Files/nodejs/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
@@ -141,16 +151,18 @@
       <updated>1603434397722</updated>
       <workItem from="1603434402332" duration="3233000" />
       <workItem from="1603501386385" duration="90000" />
+      <workItem from="1603692712644" duration="386000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3323000" />
+    <option name="totallyTimeSpent" value="3709000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-10" y="-10" width="1380" height="788" extended-state="0" />
+    <frame x="-8" y="-8" width="1376" height="754" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24962743" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16442451" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -162,7 +174,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.3467742" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -187,6 +199,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02. 位移运算符/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
         </state>
       </provider>
     </entry>
