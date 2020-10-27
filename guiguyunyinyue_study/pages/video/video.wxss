@@ -11,6 +11,8 @@
 }
 .header .search {
   border: 1rpx solid #eee;
+  box-sizing: border-box;
+  height: 60rpx;
   font-size: 26rpx;
   text-align: center;
   color: #333;
@@ -59,6 +61,9 @@
 /* 视频列表区域 */
 .videoScroll {
   margin-top: 10rpx;
+  /* 视口单位： vh vw  1vh = 1%视口高度   1vw = 1%视口宽度*/
+  /*height: calc(100vh - 170rpx);*/
+  height: calc(100vh - 100rpx); /*页面上拉触底*/
 }
 
 .videoItem {
