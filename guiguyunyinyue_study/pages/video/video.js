@@ -1447,7 +1447,22 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function ({from}) {
+    console.log(from);
+    if(from === 'menu'){
+      // 用于自定义转发内容
+      return {
+        title: '这是menu转发的内容',
+        path: '/pages/video/video',
+        imageUrl: '/static/images/nvsheng.jpg'
+      }
+    }else {
+      // 用于自定义转发内容
+      return {
+        title: '这是button转发的内容',
+        path: '/pages/video/video',
+        imageUrl: '/static/images/nvsheng.jpg'
+      }
+    }
   }
 })
