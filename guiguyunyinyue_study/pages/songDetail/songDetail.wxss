@@ -26,6 +26,13 @@
   left: 60rpx;
   width: 192rpx;
   height: 274rpx;
+  transform-origin: 60rpx 0;
+  transform: rotate(-20deg);
+  transition: transform 1s linear;
+}
+
+.needleRotate{
+  transform: rotate(0deg);
 }
 
 
@@ -36,6 +43,38 @@
   width: 598rpx;
   height: 598rpx;
 }
+
+.discAnimate {
+  /* animation: 设置动画属性*/
+  animation: disc 4s linear infinite;
+  animation-delay: 1s;
+}
+
+/*
+  @keyframes： 设置动画帧数
+    1. from to
+      1) 适用于简单的动画，动画只有两帧
+      2) 北京 --> 上海 直达
+    2. 百分比
+      1) 适用于复杂的动画，动画有多帧组成
+      2) 0 - 100%
+      3) 北京 ---> 深圳 ---> 珠海 --->  西藏 ---> 上海
+*/
+
+@keyframes disc {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+
+
 
 .discContainer  .disc {
   width: 598rpx;

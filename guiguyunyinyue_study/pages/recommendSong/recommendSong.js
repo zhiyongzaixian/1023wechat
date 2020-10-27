@@ -29,6 +29,18 @@ Page({
       recommendList: recommendListData.recommend
     })
   },
+  
+  // 跳转至歌曲详情songDetail
+  toSongDetail(event){
+    let song = event.currentTarget.dataset.song;
+    // console.log(song);
+    
+    // 路由传参： query  url?key=value&key1=value1
+    wx.navigateTo({
+      // url: '/pages/songDetail/songDetail?song=' + JSON.stringify(song)
+      url: '/pages/songDetail/songDetail?musicId=' + song.id
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
