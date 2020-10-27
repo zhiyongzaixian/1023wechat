@@ -1,4 +1,4 @@
-// pages/recommendSong/recommendSong.js
+import request from '../../utils/request'
 Page({
 
   /**
@@ -6,7 +6,8 @@ Page({
    */
   data: {
     day: '',
-    month: ''
+    month: '',
+    recommendList: [], // 推荐歌曲列表
   },
 
   /**
@@ -17,8 +18,17 @@ Page({
       day: new Date().getDate(),
       month: new Date().getMonth() + 1
     })
+    
+    this.getRecommendList();
   },
 
+  // 获取推荐歌曲列表的方法
+  async getRecommendList(){
+    let recommendListData = await request('/recommend/songs');
+    this.setData({
+      recommendList: recommendListData.recommend
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

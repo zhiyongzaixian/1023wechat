@@ -3,6 +3,7 @@
 /* 头部样式 */
 .header {
   position: relative;
+  height: 300rpx;
 }
 .header image {
   width: 100%;
@@ -40,8 +41,12 @@
   float: right;
 }
 
+.recommendScroll {
+  height: calc(100vh - 380rpx);
+}
 .recommendItem {
   display: flex;
+  margin-bottom: 20rpx;
 }
 .recommendItem .musicImg {
   width: 80rpx;

@@ -62,7 +62,7 @@
 .videoScroll {
   margin-top: 10rpx;
   /* 视口单位： vh vw  1vh = 1%视口高度   1vw = 1%视口宽度*/
-  /*height: calc(100vh - 170rpx);*/
+  /*height: calc(100vh - 170rpx); 注意点： calc运算符两侧必须有空格 */
   height: calc(100vh - 100rpx); /*页面上拉触底*/
 }
 

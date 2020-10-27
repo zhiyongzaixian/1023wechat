@@ -17,12 +17,12 @@
     </view>
 
     <!-- 列表 -->
-    <scroll-view srcoll-y>
-      <view class="recommendItem">
-        <image class="musicImg" src="/static/images/nvsheng.jpg"> </image>
+    <scroll-view scroll-y class="recommendScroll">
+      <view class="recommendItem" wx:for="{{recommendList}}" wx:key="id">
+        <image class="musicImg" src="{{item.album.picUrl}}"> </image>
         <view class="musicInfo">
-          <text>光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月光辉岁月</text>
-          <text>beyond</text>
+          <text>{{item.name}}</text>
+          <text>{{item.artists[0].name}}</text>
         </view>
         <text class="iconfont icon-gengduo"></text>
       </view>
