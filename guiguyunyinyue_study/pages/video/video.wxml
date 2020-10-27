@@ -30,6 +30,7 @@
           class="common"
           wx:if="{{item.data.vid === videoId}}"
           bindtimeupdate="handleTimeUpdate"
+          bindended="handleEnded"
       ></video>
       <image wx:else id="{{item.data.vid}}" bindtap="handlePlay" class="common" src="{{item.data.coverUrl}}"></image>
 

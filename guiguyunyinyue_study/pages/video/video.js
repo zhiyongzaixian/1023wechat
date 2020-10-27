@@ -9,6 +9,7 @@ Page({
     navId: '', // 导航的标签id
     videoList: [], // 视频的列表数据
     videoId: '', // 视频id
+    videoUpdateTime: [], // 记录视频播放的时长
   },
 
   /**
@@ -105,6 +106,13 @@ Page({
     })
     // this.vid = vid;
     this.videoContext = wx.createVideoContext(vid);
+    
+    // 判断当前是否之前是否播放过，如果播放过，跳转至指定的位置
+    let {videoUpdateTime} = this.data;
+    let videoItem = videoUpdateTime.find(item => item.vid === vid);
+    if(videoItem){// 播放过
+      this.videoContext.seek(videoItem.currentTime);
+    }
     this.videoContext.play();
     // this.videoContext.stop();
     
@@ -112,7 +120,40 @@ Page({
   
   // 视频播放进度发生改变的回调
   handleTimeUpdate(event){
-    console.log(event);
+    // console.log(event);
+    // 1. 收集当前视频的数据
+    let videoObj = {vid: event.currentTarget.id, currentTime: event.detail.currentTime};
+    // 2. 存入数据至videoUpdateTime中
+    /*
+    * 思路：
+    *   1. 用来存放视频播放进度的数组中是否已经有当前视频的数据
+    *     1) 没有： 直接push
+    *     2) 已有： 在原有的基础上直接修改currentTime
+    *
+    * */
+    let {videoUpdateTime} = this.data;
+    // [{vid: xx, currentTime: yyy}]
+    let videoItem = videoUpdateTime.find(item => item.vid === videoObj.vid);
+    if(videoItem){ // 已有
+      videoItem.currentTime = event.detail.currentTime;
+    }else { // 没有
+      videoUpdateTime.push(videoObj);
+    }
+    
+    this.setData({
+      videoUpdateTime
+    })
+  },
+  
+  // 视频播放结束的回调
+  handleEnded(event){
+    // console.log('ended');
+    let {videoUpdateTime} = this.data;
+    let vid = event.currentTarget.id;
+    videoUpdateTime.splice(videoUpdateTime.findIndex(item => item.vid === vid), 1);
+    this.setData({
+      videoUpdateTime
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
