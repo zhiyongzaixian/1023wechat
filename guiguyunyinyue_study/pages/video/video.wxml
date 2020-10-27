@@ -26,7 +26,12 @@
           bindplay="handlePlay"
           id="{{item.data.vid}}"
           poster="{{item.data.coverUrl}}"
+          object-fit="cover"
+          class="common"
+          wx:if="{{item.data.vid === videoId}}"
+          bindtimeupdate="handleTimeUpdate"
       ></video>
+      <image wx:else id="{{item.data.vid}}" bindtap="handlePlay" class="common" src="{{item.data.coverUrl}}"></image>
 
       <view class="content">{{item.data.title}}</view>
 

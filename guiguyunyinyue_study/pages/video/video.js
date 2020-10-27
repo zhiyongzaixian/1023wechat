@@ -8,6 +8,7 @@ Page({
     navList: [], // 导航数据
     navId: '', // 导航的标签id
     videoList: [], // 视频的列表数据
+    videoId: '', // 视频id
   },
 
   /**
@@ -88,20 +89,30 @@ Page({
     *
     *
     * */
+    // 获取当前点击视频的id
     let vid = event.currentTarget.id;
   
   
-    this.vid !== vid && this.videoContext && this.videoContext.stop();
+    // this.vid !== vid && this.videoContext && this.videoContext.stop();
     // if(this.vid !== vid){
     //   if(this.videoContext){
     //     this.videoContext.stop();
     //   }
     // }
-    
-    this.vid = vid;
+    // 更新videoId的状态
+    this.setData({
+      videoId: vid
+    })
+    // this.vid = vid;
     this.videoContext = wx.createVideoContext(vid);
+    this.videoContext.play();
     // this.videoContext.stop();
     
+  },
+  
+  // 视频播放进度发生改变的回调
+  handleTimeUpdate(event){
+    console.log(event);
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

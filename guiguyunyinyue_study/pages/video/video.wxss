@@ -65,11 +65,15 @@
   padding: 0 3%;
 }
 
-.videoItem video {
+/*.videoItem video {*/
+  /*width: 100%;*/
+  /*height: 360rpx;*/
+/*}*/
+
+.videoItem .common {
   width: 100%;
   height: 360rpx;
 }
-
 
 
 .videoItem .content {

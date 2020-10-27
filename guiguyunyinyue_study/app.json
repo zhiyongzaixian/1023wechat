@@ -34,5 +34,6 @@
         "selectedIconPath": "/static/images/tabs/tab-my-current.png"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
