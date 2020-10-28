@@ -1,4 +1,4 @@
-// pages/songDetail/songDetail.js
+import PubSub from 'pubsub-js';
 import request from "../../utils/request";
 // 获取整个应用实例， 注意： 修改全局数据globalData直接对象.属性修改即可
 let appInstance = getApp();
@@ -107,6 +107,16 @@ Page({
     }
   },
 
+  // 点击切歌的回调
+  handleSwitchSong(event){
+    // 订阅recommendSong发布的消息
+    PubSub.subscribe('musicId', (msg, musicId) => {
+      console.log('songDetail: ', musicId);
+    })
+    let type = event.currentTarget.id;
+    // 发布消息给recommendSong页面
+    PubSub.publish('switchType', type)
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
