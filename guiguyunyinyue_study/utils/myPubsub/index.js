@@ -51,13 +51,18 @@ PubSub.publish = function(message, data){
 }
 // let messagesObj = {
 //   musicId: {
-//
+//     '1': func,
+//     '2': func,
+//     '3': func,
 //   }
 // };
+
 // 取消订阅
 PubSub.unsubscribe = function (message) {
   // messagesObj[message] = {};
-  delete messagesObj[message];
+  if(messagesObj[message]){
+    delete messagesObj[message][token];
+  }
 }
 
 export default PubSub;

@@ -1,4 +1,5 @@
 import PubSub from 'pubsub-js';
+import moment from 'moment'
 import MyPubSub from '../../utils/myPubsub/index.js';
 import request from "../../utils/request";
 // 获取整个应用实例， 注意： 修改全局数据globalData直接对象.属性修改即可
@@ -12,6 +13,8 @@ Page({
     isPlay: false, // 音乐是否播放
     songDetail: {}, // 音乐详情对象
     musicId: '', // 音乐id
+    currentTime: '00:00', // 实时播放的时长
+    durationTime: '00:00' // 总时长
   },
 
   /**
@@ -58,7 +61,13 @@ Page({
   
     // 订阅recommendSong发布的消息
     MyPubSub.subscribe('musicId', (msg, musicId) => {
-      console.log('songDetail: ', musicId);
+      // console.log('songDetail: ', musicId);
+      
+      // 获取当前音乐musicId对应的音乐详情
+      this.getMusicInfo(musicId);
+      
+      // 自动播放当前音乐
+      this.musicControl(true, musicId);
       // 取消订阅
       MyPubSub.unsubscribe('musicId')
     })
@@ -76,8 +85,11 @@ Page({
   // 获取音乐详情的功能函数
   async getMusicInfo(musicId){
     let songDetailData = await request('/song/detail', {ids: musicId});
+    // moment(传入的时间单位是ms)
+    let durationTime = moment(songDetailData.songs[0].dt).format('mm:ss');
     this.setData({
-      songDetail: songDetailData.songs[0]
+      songDetail: songDetailData.songs[0],
+      durationTime
     })
     
     // 动态设置窗口标题
@@ -124,6 +136,9 @@ Page({
     //   // 取消订阅
     //   MyPubSub.unsubscribe('musicId')
     // })
+    
+    // 停止当前音乐播放
+    this.backgroundAudioManager.stop();
     let type = event.currentTarget.id;
     // 发布消息给recommendSong页面
     MyPubSub.publish('switchType', type)

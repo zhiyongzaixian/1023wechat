@@ -30,8 +30,10 @@ Page({
       // console.log('recommendSong: ', msg, switchType);
       let {recommendList, index} = this.data;
       if(switchType === 'pre'){ // 上一首
+        (index === 0) && (index = recommendList.length)
         index -= 1;
       }else { // 下一首
+        (index === recommendList.length - 1) && (index = -1)
         index += 1;
       }
       
