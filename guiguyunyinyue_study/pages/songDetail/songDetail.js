@@ -1,6 +1,7 @@
 // pages/songDetail/songDetail.js
 import request from "../../utils/request";
-
+// 获取整个应用实例， 注意： 修改全局数据globalData直接对象.属性修改即可
+let appInstance = getApp();
 Page({
 
   /**
@@ -30,27 +31,39 @@ Page({
       musicId
     })
     this.getMusicInfo(musicId);
+    
+    // 判断当前页面的音乐是否在播放，如果在播放要修改当前页面的播放状态isPlay
+    if(appInstance.globalData.isMusicPlay && appInstance.globalData.musicId === musicId){
+      this.setData({
+        isPlay: true
+      })
+    }
+    
     // 创建控制音乐的实例对象
     this.backgroundAudioManager =  wx.getBackgroundAudioManager();
     // 部署监听音乐播放/暂停/停止的回调
     this.backgroundAudioManager.onPlay(() => {
-      this.setData({
-        isPlay: true
-      })
+      this.changeState(true);
+      appInstance.globalData.musicId = musicId;
     })
     this.backgroundAudioManager.onPause(() => {
-      this.setData({
-        isPlay: false
-      })
+      this.changeState(false);
     })
   
     this.backgroundAudioManager.onStop(() => {
-      this.setData({
-        isPlay: false
-      })
+      this.changeState(false);
     })
   
   
+  },
+  
+  // 封装修改状态的功能函数
+  changeState(isPlay){
+    this.setData({
+      isPlay
+    })
+    // 修改全局状态
+    appInstance.globalData.isMusicPlay = isPlay;
   },
   
   // 获取音乐详情的功能函数
