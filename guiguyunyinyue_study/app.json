@@ -1,5 +1,6 @@
 {
   "pages": [
+
     "pages/index/index",
     "pages/video/video",
     "pages/login/login",
@@ -36,14 +37,32 @@
     ]
   },
   "sitemapLocation": "sitemap.json",
-  "requiredBackgroundModes": ["audio"],
+  "requiredBackgroundModes": [
+    "audio"
+  ],
   "subpackages": [
     {
       "root": "songPackage",
+      "name": "song",
       "pages": [
         "pages/recommendSong/recommendSong",
         "pages/songDetail/songDetail"
+      ],
+      "independent": true
+    },
+    {
+      "root": "otherPackage",
+      "name": "other",
+      "pages": [
+        "pages/other/other"
       ]
     }
-  ]
+  ],
+  "preloadRule": {
+    "pages/index/index": {
+      "packages": [
+        "song", "otherPackage"
+      ]
+    }
+  }
 }

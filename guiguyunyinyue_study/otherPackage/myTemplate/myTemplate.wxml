@@ -1,0 +1,5 @@
+<template name="myTmp">
+  <view class="tmpTitle">我是自定义模板</view>
+  <view>我的名字： {{username}}</view>
+  <view>我的年龄:  {{age}}</view>
+</template>

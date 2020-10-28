@@ -1,4 +1,8 @@
-/* pages/songDetail/songDetail.wxss */
+@import "/static/iconfont/iconfont.wxss";
+page {
+  height: 100%;
+}
+
 .songDetailContainer {
   display: flex;
   flex-direction: column;

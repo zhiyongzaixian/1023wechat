@@ -1,0 +1,3 @@
+/* otherPackage/pages/other/other.wxss */
+
+@import "../../myTemplate/myTemplate.wxss";

@@ -1,0 +1,10 @@
+<import src="../../myTemplate/myTemplate.wxml"/>
+
+<view class="otherContainer">
+  <view class="title">测试自定义模板</view>
+
+  <!-- 使用模板 必须通过is属性指定模板的name -->
+
+  <!-- 通过data属性向模板内部导入数据 -->
+  <template is="myTmp" data="{{...person}}"/>
+</view>
