@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fe2d2c1-943e-4bea-b385-d2f9900af12e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/pages/recommendSong/recommendSong.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/recommendSong/recommendSong.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/songDetail/songDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/songDetail/songDetail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/myPubsub/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/myPubsub/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -47,7 +46,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="10783" />
+          <entry key="js" value="10796" />
           <entry key="json" value="79" />
           <entry key="wxml" value="3177" />
           <entry key="wxss" value="3690" />
@@ -58,18 +57,18 @@
           <entry key="CSS" value="3690" />
           <entry key="HTML" value="3177" />
           <entry key="JSON" value="79" />
-          <entry key="JavaScript" value="10783" />
+          <entry key="JavaScript" value="10796" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/songDetail/songDetail.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
+            <state>
+              <caret line="45" column="12" lean-forward="true" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
                 <element signature="e#1622#1632#0" />
@@ -81,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/utils/myPubsub/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="61">
-              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="-137">
+              <caret line="25" column="2" lean-forward="true" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
               <folding>
                 <element signature="e#14#20#0" />
               </folding>
@@ -96,8 +95,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/node_modules/pubsub-js/src/pubsub.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="181" column="9" lean-forward="true" selection-start-line="181" selection-start-column="9" selection-end-line="181" selection-end-column="9" />
+            <state relative-caret-position="145">
+              <caret line="156" column="6" lean-forward="true" selection-start-line="156" selection-start-column="6" selection-end-line="156" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -161,9 +160,9 @@
         <option value="$PROJECT_DIR$/pages/songDetail/songDetail.wxml" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/pages/recommendSong/recommendSong.wxml" />
-        <option value="$PROJECT_DIR$/utils/myPubsub/index.js" />
         <option value="$PROJECT_DIR$/pages/recommendSong/recommendSong.js" />
         <option value="$PROJECT_DIR$/pages/songDetail/songDetail.js" />
+        <option value="$PROJECT_DIR$/utils/myPubsub/index.js" />
       </list>
     </option>
   </component>
@@ -262,12 +261,12 @@
       <updated>1603501477520</updated>
       <workItem from="1603501478825" duration="38486000" />
       <workItem from="1603756375261" duration="21020000" />
-      <workItem from="1603844032948" duration="9485000" />
+      <workItem from="1603844032948" duration="10273000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68991000" />
+    <option name="totallyTimeSpent" value="69779000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="754" extended-state="6" />
@@ -601,13 +600,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/pubsub-js/src/pubsub.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="181" column="9" lean-forward="true" selection-start-line="181" selection-start-column="9" selection-end-line="181" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/recommendSong/recommendSong.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -619,26 +611,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/myPubsub/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-          <folding>
-            <element signature="e#14#20#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/songDetail/songDetail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
+        <state>
+          <caret line="45" column="12" lean-forward="true" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
             <element signature="e#1622#1632#0" />
             <element signature="e#1109#1352#0" />
             <element signature="e#1391#1547#0" />
             <element signature="e#1611#1987#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/pubsub-js/src/pubsub.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="156" column="6" lean-forward="true" selection-start-line="156" selection-start-column="6" selection-end-line="156" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/myPubsub/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-137">
+          <caret line="25" column="2" lean-forward="true" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
+          <folding>
+            <element signature="e#14#20#0" />
           </folding>
         </state>
       </provider>

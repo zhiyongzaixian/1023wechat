@@ -49,10 +49,15 @@ PubSub.publish = function(message, data){
     messagesObj[message][key](message, data);
   }
 }
-
+// let messagesObj = {
+//   musicId: {
+//
+//   }
+// };
 // 取消订阅
 PubSub.unsubscribe = function (message) {
-  messagesObj[message] = {};
+  // messagesObj[message] = {};
+  delete messagesObj[message];
 }
 
 export default PubSub;
