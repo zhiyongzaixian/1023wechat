@@ -1,7 +1,7 @@
 import PubSub from 'pubsub-js';
-import MyPubSub from '../../utils/myPubsub/index.js';
+import MyPubSub from '../../../utils/myPubsub/index.js';
 
-import request from '../../utils/request'
+import request from '../../../utils/request'
 Page({
 
   /**
@@ -72,7 +72,7 @@ Page({
     // 路由传参： query  url?key=value&key1=value1
     wx.navigateTo({
       // url: '/pages/songDetail/songDetail?song=' + JSON.stringify(song)
-      url: '/pages/songDetail/songDetail?musicId=' + song.id
+      url: '/songPackage/pages/songDetail/songDetail?musicId=' + song.id
     })
   },
   /**

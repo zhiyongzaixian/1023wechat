@@ -1,7 +1,7 @@
 import PubSub from 'pubsub-js';
 import moment from 'moment'
-import MyPubSub from '../../utils/myPubsub/index.js';
-import request from "../../utils/request";
+import MyPubSub from '../../../utils/myPubsub/index.js';
+import request from "../../../utils/request";
 // 获取整个应用实例， 注意： 修改全局数据globalData直接对象.属性修改即可
 let appInstance = getApp();
 Page({
@@ -14,7 +14,8 @@ Page({
     songDetail: {}, // 音乐详情对象
     musicId: '', // 音乐id
     currentTime: '00:00', // 实时播放的时长
-    durationTime: '00:00' // 总时长
+    durationTime: '00:00', // 总时长
+    currentWidth: 0, // 实时进度条的长度
   },
 
   /**
@@ -57,7 +58,26 @@ Page({
     this.backgroundAudioManager.onStop(() => {
       this.changeState(false);
     })
+    
+    // 监听音乐自然播放结束，自动切换至下一首
+    this.backgroundAudioManager.onEnded(() => {
+      // 自动切换至下一首
+      // 发布消息给recommendSong页面
+      MyPubSub.publish('switchType', 'next')
+    })
   
+    // 监听音乐实时播放的进度
+    this.backgroundAudioManager.onTimeUpdate(() => {
+      // console.log('总时长： ', this.backgroundAudioManager.duration);
+      // console.log('实时播放的时间： ', this.backgroundAudioManager.currentTime);
+      
+      let currentTime = moment(this.backgroundAudioManager.currentTime * 1000).format('mm:ss');
+      let currentWidth = this.backgroundAudioManager.currentTime / this.backgroundAudioManager.duration * 450;
+      this.setData({
+        currentTime,
+        currentWidth
+      })
+    })
   
     // 订阅recommendSong发布的消息
     MyPubSub.subscribe('musicId', (msg, musicId) => {
@@ -86,6 +106,7 @@ Page({
   async getMusicInfo(musicId){
     let songDetailData = await request('/song/detail', {ids: musicId});
     // moment(传入的时间单位是ms)
+    // 格式化时间
     let durationTime = moment(songDetailData.songs[0].dt).format('mm:ss');
     this.setData({
       songDetail: songDetailData.songs[0],

@@ -141,7 +141,6 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: 100rpx;
   height: 4rpx;
   background: red;
 }
