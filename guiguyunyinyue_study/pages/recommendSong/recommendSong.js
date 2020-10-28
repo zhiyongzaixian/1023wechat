@@ -1,4 +1,5 @@
 import PubSub from 'pubsub-js';
+import MyPubSub from '../../utils/myPubsub/index.js';
 
 import request from '../../utils/request'
 Page({
@@ -25,7 +26,7 @@ Page({
     this.getRecommendList();
     
     // 订阅songDetail发布的消息
-    PubSub.subscribe('switchType', (msg, switchType) => {
+    MyPubSub.subscribe('switchType', (msg, switchType) => {
       // console.log('recommendSong: ', msg, switchType);
       let {recommendList, index} = this.data;
       if(switchType === 'pre'){ // 上一首
@@ -42,7 +43,7 @@ Page({
       // 获取即将要切歌的musicId
       let musicId = recommendList[index].id;
       // 发布消息给songDetail
-      PubSub.publish('musicId', musicId);
+      MyPubSub.publish('musicId', musicId);
       
     })
   },
