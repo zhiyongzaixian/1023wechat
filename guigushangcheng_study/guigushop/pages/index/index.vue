@@ -16,25 +16,59 @@
 				{{item.text}}
 			</view>
 		</scroll-view>
+		
+		<!-- <Child a=123></Child> -->
 	</view>
 </template>
 
 <script>
+	import {mapState, mapActions} from 'vuex'
 	import request from '../../utils/request.js'
 	export default {
 		data() {
 			return {
-				indexData: {}
+				
 			};
 		},
 		mounted() {
-			this.getIndexData();
+			// this.getIndexData();
+			
+			// 测试是否可以获取Vuex中store对象的状态数据
+			// console.log(this.$store.state.indexModule.initData)
+			
+			// 耦合度： 关联性 开发中一定想办法降低耦合度，提高解耦性
+			// this.$store.dispatch('getIndexDataAction');
+			// console.log(this.$store.state.indexModule.indexData)
+			
+			// 分发action
+			this.getIndexDataAction();
 		},
 		methods: {
+			// ...mapActions({
+			// 	this.属性名: 属性值(action)
+			// })
+			
+			// var store = {
+			// 	actions: {
+			// 		getIndexDataAction(){
+						
+			// 		}
+			// 	}
+			// }
+			
+			// this.xx = store.actions.getIndexDataAction
+			...mapActions({
+				getIndexDataAction: 'getIndexDataAction'
+			}),
 			async getIndexData(){
 				let indexData = await request('/getIndexData');
 				this.indexData = indexData;
 			}
+		},
+		computed: {
+			...mapState({
+				indexData: state => state.indexModule.indexData
+			})
 		}
 	}
 </script>
