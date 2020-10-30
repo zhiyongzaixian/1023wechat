@@ -139,12 +139,20 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-var _vuex = __webpack_require__(/*! vuex */ 31);
-var _request = _interopRequireDefault(__webpack_require__(/*! ../../utils/request.js */ 28));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
-{
-  data: function data() {
-    return {};
 
+
+
+
+var _vuex = __webpack_require__(/*! vuex */ 31);
+var _request = _interopRequireDefault(__webpack_require__(/*! ../../utils/request.js */ 28));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var Recommend = function Recommend() {return __webpack_require__.e(/*! import() | components/Recommend/Recommend */ "components/Recommend/Recommend").then(__webpack_require__.bind(null, /*! ../../components/Recommend/Recommend.vue */ 33));};var _default =
+
+{
+  components: {
+    Recommend: Recommend },
+
+  data: function data() {
+    return {
+      navIndex: 0 };
 
   },
   mounted: function mounted() {
@@ -179,8 +187,12 @@ var _request = _interopRequireDefault(__webpack_require__(/*! ../../utils/reques
 
     getIndexData: function () {var _getIndexData = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var indexData;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
                   (0, _request.default)('/getIndexData'));case 2:indexData = _context.sent;
-                this.indexData = indexData;case 4:case "end":return _context.stop();}}}, _callee, this);}));function getIndexData() {return _getIndexData.apply(this, arguments);}return getIndexData;}() }),
+                this.indexData = indexData;case 4:case "end":return _context.stop();}}}, _callee, this);}));function getIndexData() {return _getIndexData.apply(this, arguments);}return getIndexData;}(),
 
+    // 点击切换导航的回调
+    changeNav: function changeNav(navIndex) {
+      this.navIndex = navIndex;
+    } }),
 
   computed: _objectSpread({},
   (0, _vuex.mapState)({

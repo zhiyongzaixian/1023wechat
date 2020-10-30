@@ -14,7 +14,8 @@ let mutations = {
 let actions = {
 	async getIndexDataAction({commit}){
 		// 1. 执行异步任务
-		let indexData = await request('/getIndexData')
+		let indexData = await request('/getIndexData') // 小程序
+		// let indexData = await request('/xxx/getIndexData') // H5 跨域
 		// 2. 通过commit触发mutation，同时将异步数据交给对应的mutation
 		commit('changeIndexDataMutation', indexData)
 	}

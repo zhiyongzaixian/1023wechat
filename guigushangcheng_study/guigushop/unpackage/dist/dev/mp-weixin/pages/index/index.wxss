@@ -6,19 +6,19 @@
 				3. 支持样式层级缩进
 				
 	 */
-.header {
+#header {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   padding: 10rpx 0;
 }
-.header .logo {
+#header .logo {
   width: 140rpx;
   height: 40rpx;
   margin: 10rpx 30rpx;
 }
-.header .search {
+#header .search {
   position: relative;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -29,22 +29,22 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-.header .search .iconfont {
+#header .search .iconfont {
   position: absolute;
   left: 10rpx;
   top: 15rpx;
   font-size: 30rpx;
 }
-.header .search input {
+#header .search input {
   width: 100%;
   height: 100%;
   padding-left: 50rpx;
 }
-.header .search .placeholder {
+#header .search .placeholder {
   font-size: 26rpx;
   color: #666;
 }
-.header .userName {
+#header .userName {
   width: 144rpx;
   height: 60rpx;
   text-align: center;
@@ -64,6 +64,9 @@
   line-height: 80rpx;
   width: 140rpx;
   text-align: center;
+}
+.navScroll .navItem.active {
+  border-bottom: 1rpx solid #bb2c08;
 }
 .test {
   font-size: 0;

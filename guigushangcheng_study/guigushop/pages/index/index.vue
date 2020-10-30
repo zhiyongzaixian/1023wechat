@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<!-- 头部区域  -->
-		<view class="header">
+		<view id="header">
 			<image class="logo" src="../../static/images/logo.png" mode=""></image>
 			<view class="search">
 				<text class="iconfont icon-sousuo"></text>
@@ -11,23 +11,31 @@
 		</view>
 	
 		<!-- 导航区域 -->
-		<scroll-view class="navScroll" scroll-x="true" enable-flex>
-			<view class="navItem" v-for="item in indexData.kingKongModule.kingKongList" :key='item.L1Id'>
+		<scroll-view class="navScroll" scroll-x="true" enable-flex  v-if='indexData.kingKongModule'>
+			<view class="navItem" :class="{active: navIndex === 0}" @click="changeNav(0)">
+				推荐
+			</view>
+			<view class="navItem" :class="{active: navIndex === (index + 1)}" @click="changeNav((index + 1))" v-for="(item, index) in indexData.kingKongModule.kingKongList" :key='item.L1Id'>
 				{{item.text}}
 			</view>
 		</scroll-view>
 		
-		<!-- <Child a=123></Child> -->
+		<!-- 内容区 -->
+		<Recommend></Recommend>
 	</view>
 </template>
 
 <script>
 	import {mapState, mapActions} from 'vuex'
 	import request from '../../utils/request.js'
+	import Recommend from '../../components/Recommend/Recommend.vue'
 	export default {
+		components:{
+			Recommend
+		},
 		data() {
 			return {
-				
+				navIndex: 0
 			};
 		},
 		mounted() {
@@ -63,6 +71,10 @@
 			async getIndexData(){
 				let indexData = await request('/getIndexData');
 				this.indexData = indexData;
+			},
+			// 点击切换导航的回调
+			changeNav(navIndex){
+				this.navIndex = navIndex;
 			}
 		},
 		computed: {
@@ -86,7 +98,7 @@
 	// 	display: flex;
 	// }
 	
-	.header 
+	#header 
 		display flex
 		padding 10rpx 0
 		.logo
@@ -130,7 +142,8 @@
 			line-height 80rpx
 			width 140rpx
 			text-align center
-			
+		.navItem.active
+			border-bottom 1rpx solid #BB2C08
 			
 			
 
