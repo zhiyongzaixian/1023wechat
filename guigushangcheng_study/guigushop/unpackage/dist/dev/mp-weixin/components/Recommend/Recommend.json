@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "index-cate-gory": "/components/indexCateGory/indexCateGory"
+  },
   "component": true
 }
