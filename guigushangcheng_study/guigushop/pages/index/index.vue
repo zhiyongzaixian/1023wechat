@@ -12,68 +12,29 @@
 	
 		<!-- 导航区域 -->
 		<scroll-view class="navScroll" scroll-x="true" enable-flex>
-			<view class="navItem">
-				居家生活
-			</view>
-			<view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
-			</view><view class="navItem">
-				居家生活
+			<view class="navItem" v-for="item in indexData.kingKongModule.kingKongList" :key='item.L1Id'>
+				{{item.text}}
 			</view>
 		</scroll-view>
 	</view>
 </template>
 
 <script>
+	import request from '../../utils/request.js'
 	export default {
 		data() {
 			return {
-				
+				indexData: {}
 			};
+		},
+		mounted() {
+			this.getIndexData();
+		},
+		methods: {
+			async getIndexData(){
+				let indexData = await request('/getIndexData');
+				this.indexData = indexData;
+			}
 		}
 	}
 </script>
