@@ -1,3 +1,4 @@
+import Vue from 'vue'
 let state = {
 	cartList: [
 		{
@@ -146,6 +147,7 @@ let state = {
 }
 // 数据源在哪，操作数据的方法在哪
 let mutations = {
+	// 添加至购物车
 	addShopMutation(state, shopDetail){
 		/* 
 		 思路： 
@@ -158,11 +160,46 @@ let mutations = {
 		let shopItem = state.cartList.find(item => item.id === shopDetail.id);
 		if(shopItem){ // 有
 			shopItem.count += 1;
+			console.log('vuex', shopItem.count)
 		}else { // 没有
-			shopDetail.count = 1;
-			shopDetail.selected = true;
+			// 非响应式
+			// shopDetail.count = 1;
+			// shopDetail.selected = true;
+			
+			// 响应式属性
+			Vue.set(shopDetail, 'count', 1);
+			Vue.set(shopDetail, 'selected', true);
 			state.cartList.push(shopDetail)
 		}
+	},
+	// 修改商品数量的mutation
+	changeCountMutation(state, {isAdd, index}){
+		// console.log('mutation:', isAdd, index)
+		if(isAdd){ // 加
+			state.cartList[index].count += 1;
+		}else { // 减
+			// 判断商品数量即将为零的时候操作
+			if(state.cartList[index].count <= 1){
+				// 询问用户
+				wx.showModal({
+					content:'你确认删除该商品吗？',
+					success: (res) => {
+						if(res.confirm){
+							// 删除该商品
+							state.cartList.splice(index, 1)
+						}
+					}
+				})
+			
+			}else {
+				state.cartList[index].count -= 1;
+			}
+			
+		}
+	},
+	// 修改是否选中的状态
+	changeSelecteMutation(state, {selected, index}){
+		state.cartList[index].selected = selected;
 	}
 }
 

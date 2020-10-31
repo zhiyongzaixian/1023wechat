@@ -172,16 +172,42 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
 var _vuex = __webpack_require__(/*! vuex */ 16);function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
 {
   data: function data() {
-    return {};
+    return {
+      person: {
+        username: 'wade' } };
 
 
   },
+  mounted: function mounted() {
+    // setTimeout(() => {
+    // 	// this.person.username = 'curry'
+    // 	this.person.age = 333
+    // }, 2000)
+  },
   computed: _objectSpread({},
   (0, _vuex.mapState)({
-    cartList: function cartList(state) {return state.cartModule.cartList;} })) };exports.default = _default;
+    cartList: function cartList(state) {return state.cartModule.cartList;} })),
+
+
+  methods: _objectSpread({},
+  (0, _vuex.mapMutations)({
+    changeCountMutation: 'changeCountMutation',
+    changeSelecteMutation: 'changeSelecteMutation' }), {
+
+    // 修改数量的回调
+    changeShopCount: function changeShopCount(isAdd, index) {
+      // console.log(isAdd, index)
+      this.changeCountMutation({ isAdd: isAdd, index: index });
+    },
+    // 点击修改是否选中状态的回调
+    changeSelected: function changeSelected(selected, index) {
+      this.changeSelecteMutation({ selected: selected, index: index });
+    } }) };exports.default = _default;
 
 /***/ }),
 

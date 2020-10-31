@@ -1,6 +1,8 @@
 <template>
 	<view class="cartContainer">
 		<view class="title">购物车</view>
+<!-- 		<view>{{person.username}}</view>
+		<view>{{person.age}}</view> -->
 <!-- 		<view class="header">
 			<text>30天无忧退货</text>
 			<text>48小时快速退货</text>
@@ -15,7 +17,7 @@
 				<!-- 购物车列表 -->
 		<view class="cartList">
 			<view class="cartItem" v-for="(cartItem, index) in cartList" :key='cartItem.id'>
-				<text class='iconfont icon-xuanzhong ' :class="{selected: cartItem.selected}"></text>
+				<text class='iconfont icon-xuanzhong ' :class="{selected: cartItem.selected}" @click="changeSelected(!cartItem.selected, index)"></text>
 				<view class="shopItem">
 					<image class="shopImg" :src="cartItem.listPicUrl" mode=""></image>
 					<view class="shopInfo">
@@ -25,9 +27,9 @@
 				</view>
 				<!-- 控制数量 -->
 				<view class="countCtrl">
-					<text class="add" > + </text>
+					<text class="add" @click="changeShopCount(true, index)"> + </text>
 					<text class="count"> {{cartItem.count}} </text>
-					<text class="del"> - </text>
+					<text class="del" @click="changeShopCount(false, index)"> - </text>
 				</view>
 			</view>
 		</view>
@@ -48,17 +50,40 @@
 </template>
 
 <script>
-	import {mapState} from 'vuex'
+	import {mapState, mapMutations} from 'vuex'
 	export default {
 		data() {
 			return {
-				
+				person: {
+					username: 'wade'
+				}
 			};
+		},
+		mounted() {
+			// setTimeout(() => {
+			// 	// this.person.username = 'curry'
+			// 	this.person.age = 333
+			// }, 2000)
 		},
 		computed: {
 			...mapState({
 				cartList: state => state.cartModule.cartList
 			})
+		},
+		methods: {
+			...mapMutations({
+				changeCountMutation: 'changeCountMutation',
+				changeSelecteMutation: 'changeSelecteMutation',
+			}),
+			// 修改数量的回调
+			changeShopCount(isAdd, index){
+				// console.log(isAdd, index)
+				this.changeCountMutation({isAdd, index});
+			},
+			// 点击修改是否选中状态的回调
+			changeSelected(selected, index){
+				this.changeSelecteMutation({selected, index});
+			}
 		}
 	}
 </script>

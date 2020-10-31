@@ -179,6 +179,7 @@ var _vuex = __webpack_require__(/*! vuex */ 16);function _objectSpread(target) {
       // 1. 提供当前商品的详情对象 shopDetail
       // 2. 触发mutation， 同时将shopDetail交给mutation
       // this.$store.commit('addShopMutation', this.shopDetail))
+      // console.log('加入至购物车。。。')
       this.addShopMutation(this.shopDetail);
     } }) };exports.default = _default;
 

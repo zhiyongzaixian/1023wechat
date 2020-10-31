@@ -10399,7 +10399,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var state = {
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var state = {
   cartList: [
   {
     "count": 1,
@@ -10547,6 +10548,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
   // 数据源在哪，操作数据的方法在哪
 };var mutations = {
+  // 添加至购物车
   addShopMutation: function addShopMutation(state, shopDetail) {
     /* 
                                                                  思路： 
@@ -10559,11 +10561,46 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     var shopItem = state.cartList.find(function (item) {return item.id === shopDetail.id;});
     if (shopItem) {// 有
       shopItem.count += 1;
+      console.log('vuex', shopItem.count);
     } else {// 没有
-      shopDetail.count = 1;
-      shopDetail.selected = true;
+      // 非响应式
+      // shopDetail.count = 1;
+      // shopDetail.selected = true;
+
+      // 响应式属性
+      _vue.default.set(shopDetail, 'count', 1);
+      _vue.default.set(shopDetail, 'selected', true);
       state.cartList.push(shopDetail);
     }
+  },
+  // 修改商品数量的mutation
+  changeCountMutation: function changeCountMutation(state, _ref) {var isAdd = _ref.isAdd,index = _ref.index;
+    // console.log('mutation:', isAdd, index)
+    if (isAdd) {// 加
+      state.cartList[index].count += 1;
+    } else {// 减
+      // 判断商品数量即将为零的时候操作
+      if (state.cartList[index].count <= 1) {
+        // 询问用户
+        wx.showModal({
+          content: '你确认删除该商品吗？',
+          success: function success(res) {
+            if (res.confirm) {
+              // 删除该商品
+              state.cartList.splice(index, 1);
+            }
+          } });
+
+
+      } else {
+        state.cartList[index].count -= 1;
+      }
+
+    }
+  },
+  // 修改是否选中的状态
+  changeSelecteMutation: function changeSelecteMutation(state, _ref2) {var selected = _ref2.selected,index = _ref2.index;
+    state.cartList[index].selected = selected;
   } };
 
 
