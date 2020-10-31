@@ -141,8 +141,14 @@ var _request = _interopRequireDefault(__webpack_require__(/*! ../../utils/reques
   },
   methods: {
     getIndexCateList: function () {var _getIndexCateList = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  (0, _request.default)('/getIndexCateListData'));case 2:this.indexCateList = _context.sent;case 3:case "end":return _context.stop();}}}, _callee, this);}));function getIndexCateList() {return _getIndexCateList.apply(this, arguments);}return getIndexCateList;}() },
+                  (0, _request.default)('/getIndexCateListData'));case 2:this.indexCateList = _context.sent;case 3:case "end":return _context.stop();}}}, _callee, this);}));function getIndexCateList() {return _getIndexCateList.apply(this, arguments);}return getIndexCateList;}(),
 
+    // 跳转至detail耶米阿尼
+    toDetail: function toDetail(shopDetail) {
+      wx.navigateTo({
+        url: '/pages/detail/detail?shopDetail=' + JSON.stringify(shopDetail) });
+
+    } },
 
   computed: {
     indexCateItem: function indexCateItem() {var _this = this;

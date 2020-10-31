@@ -10375,7 +10375,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "usingComponents": { "recommend": "/components/Recommend/Recommend", "index-cate-list": "/components/indexCateList/indexCateList" } }, "pages/cateGory/cateGory": { "navigationBarTitleText": "分类", "usingComponents": {} }, "pages/cart/cart": { "navigationBarTitleText": "购物车", "usingComponents": {} }, "pages/personal/personal": { "navigationBarTitleText": "个人中心", "usingComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "硅谷商城", "navigationBarBackgroundColor": "#BB2C08" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "usingComponents": { "recommend": "/components/Recommend/Recommend", "index-cate-list": "/components/indexCateList/indexCateList" } }, "pages/cateGory/cateGory": { "navigationBarTitleText": "分类", "usingComponents": {} }, "pages/cart/cart": { "navigationBarTitleText": "购物车", "usingComponents": {} }, "pages/personal/personal": { "navigationBarTitleText": "个人中心", "usingComponents": {} }, "pages/detail/detail": {} }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "硅谷商城", "navigationBarBackgroundColor": "#BB2C08" } };exports.default = _default;
 
 /***/ }),
 
@@ -10541,13 +10541,30 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     "primarySkuId": 1707011,
     "displaySkuId": 1707011,
     "productPlace": "",
-    "itemSizeTableFlag": false }] };
+    "itemSizeTableFlag": false }]
 
 
 
-
-var mutations = {};
-
+  // 数据源在哪，操作数据的方法在哪
+};var mutations = {
+  addShopMutation: function addShopMutation(state, shopDetail) {
+    /* 
+                                                                 思路： 
+                                                                	1. 判断购物车中是否已有该商品
+                                                                		1) 如果有，在原有商品的数量基础上累加1
+                                                                		2) 如果没有，将当前商品的信息对象push到购物车数组cartList
+                                                                 
+                                                                 */
+    //  判断购物车中是否已有该商品
+    var shopItem = state.cartList.find(function (item) {return item.id === shopDetail.id;});
+    if (shopItem) {// 有
+      shopItem.count += 1;
+    } else {// 没有
+      shopDetail.count = 1;
+      shopDetail.selected = true;
+      state.cartList.push(shopDetail);
+    }
+  } };
 
 
 var actions = {};

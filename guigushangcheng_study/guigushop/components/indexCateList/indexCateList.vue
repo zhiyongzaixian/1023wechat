@@ -11,7 +11,7 @@
 		<view class="common">{{indexCateItem.category.name}}</view>
 		<view class="common">{{indexCateItem.category.frontDesc}}</view>
 		<view class="shopList">
-			<view class="shopItem" v-for="shopItem in indexCateItem.itemList" :key='shopItem.id'>
+			<view class="shopItem" v-for="shopItem in indexCateItem.itemList" :key='shopItem.id' @click="toDetail(shopItem)">
 				<image :src="shopItem.listPicUrl" mode=""></image>
 				<view class="shopInfo">{{shopItem.name}}</view>
 				<view class="price">$ {{shopItem.retailPrice}}</view>
@@ -35,6 +35,12 @@
 		methods: {
 			async getIndexCateList(){
 				this.indexCateList = await request('/getIndexCateListData')
+			},
+			// 跳转至detail耶米阿尼
+			toDetail(shopDetail){
+				wx.navigateTo({
+					url: '/pages/detail/detail?shopDetail=' + JSON.stringify(shopDetail)
+				})
 			}
 		},
 		computed: {

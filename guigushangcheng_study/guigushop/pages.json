@@ -30,6 +30,10 @@
 					"navigationBarTitleText" : "个人中心"
 				}
 			}
+        ,{
+            "path" : "pages/detail/detail",
+            "style" : {}
+        }
     ],
 		"tabBar": {
 			"color": "#555",

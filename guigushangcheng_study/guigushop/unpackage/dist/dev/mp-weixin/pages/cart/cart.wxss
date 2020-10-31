@@ -43,6 +43,9 @@
   color: #7f7f7f;
   line-height: 60rpx;
 }
+.cartContainer .cartList {
+  margin-bottom: 96rpx;
+}
 .cartContainer .cartList .cartItem {
   position: relative;
   display: -webkit-box;
@@ -112,12 +115,12 @@
   border-bottom: 1rpx solid #eee;
 }
 .cartContainer .cartFooter {
-  position: absolute;
+  position: fixed;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  bottom: 2rpx;
+  bottom: 0rpx;
   height: 96rpx;
   line-height: 96rpx;
   width: 100%;

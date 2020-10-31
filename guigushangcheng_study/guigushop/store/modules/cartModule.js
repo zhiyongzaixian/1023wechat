@@ -144,9 +144,26 @@ let state = {
 		}
 	]
 }
-
+// 数据源在哪，操作数据的方法在哪
 let mutations = {
-	
+	addShopMutation(state, shopDetail){
+		/* 
+		 思路： 
+			1. 判断购物车中是否已有该商品
+				1) 如果有，在原有商品的数量基础上累加1
+				2) 如果没有，将当前商品的信息对象push到购物车数组cartList
+		 
+		 */
+		//  判断购物车中是否已有该商品
+		let shopItem = state.cartList.find(item => item.id === shopDetail.id);
+		if(shopItem){ // 有
+			shopItem.count += 1;
+		}else { // 没有
+			shopDetail.count = 1;
+			shopDetail.selected = true;
+			state.cartList.push(shopDetail)
+		}
+	}
 }
 
 let actions = {
