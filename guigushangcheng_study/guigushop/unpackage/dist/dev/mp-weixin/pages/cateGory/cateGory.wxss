@@ -1,0 +1,52 @@
+.cateGoryContainer .header {
+  border-bottom: 1rpx solid #eee;
+  height: 80rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10rpx 0;
+}
+.cateGoryContainer .header .search {
+  width: 96%;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 26rpx;
+  margin: 0 auto;
+  background: #ededed;
+}
+.cateGoryContainer .contentContainer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.cateGoryContainer .contentContainer .leftContianer {
+  width: 20%;
+}
+.cateGoryContainer .contentContainer .leftContianer .leftScroll {
+  height: calc(100vh - 80rpx);
+}
+.cateGoryContainer .contentContainer .leftContianer .leftScroll .navItem {
+  position: relative;
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 26rpx;
+}
+.cateGoryContainer .contentContainer .leftContianer .leftScroll .navItem.active:before {
+  position: absolute;
+  left: 6rpx;
+  top: 10rpx;
+  content: '';
+  width: 2rpx;
+  height: 60rpx;
+  background: #bb2c08;
+}
+.cateGoryContainer .contentContainer .rightContianer {
+  width: 80%;
+  background: #4cd964;
+}
+.cateGoryContainer .contentContainer .rightContianer .rightScroll {
+  height: calc(100vh - 80rpx);
+}
+

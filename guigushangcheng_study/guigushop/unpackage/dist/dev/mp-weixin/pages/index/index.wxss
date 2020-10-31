@@ -4,6 +4,7 @@
 				1. 省略大括号
 				2. 省略冒泡，封号
 				3. 支持样式层级缩进
+				4. &代表父级引用
 				
 	 */
 #header {
@@ -64,9 +65,14 @@
   line-height: 80rpx;
   width: 140rpx;
   text-align: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .navScroll .navItem.active {
   border-bottom: 1rpx solid #bb2c08;
+}
+.indexContentScroll {
+  height: calc(100vh - 160rpx);
 }
 .test {
   font-size: 0;

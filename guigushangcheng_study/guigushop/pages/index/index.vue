@@ -21,7 +21,9 @@
 		</scroll-view>
 		
 		<!-- 内容区 -->
-		<Recommend></Recommend>
+		<scroll-view scroll-y="true" class="indexContentScroll">
+			<Recommend></Recommend>
+		</scroll-view>
 	</view>
 </template>
 
@@ -92,6 +94,7 @@
 				1. 省略大括号
 				2. 省略冒泡，封号
 				3. 支持样式层级缩进
+				4. &代表父级引用
 				
 	 */
 	// .header {
@@ -142,9 +145,11 @@
 			line-height 80rpx
 			width 140rpx
 			text-align center
-		.navItem.active
-			border-bottom 1rpx solid #BB2C08
-			
+			box-sizing border-box
+			&.active
+				border-bottom 1rpx solid #BB2C08
+	.indexContentScroll
+		height calc(100vh - 160rpx)
 			
 
 

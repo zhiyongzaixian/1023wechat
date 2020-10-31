@@ -18,4 +18,12 @@ router.get('/getIndexData', (ctx) => {
 });
 
 
+// 分类页的数据接口
+// 主页的数据接口
+let cateGoryData = require('../datas/categoryDatas.json');
+router.get('/getCateGoryData', (ctx) => {
+	ctx.body = cateGoryData;
+});
+
+
 module.exports = router;
