@@ -19,10 +19,17 @@ router.get('/getIndexData', (ctx) => {
 
 
 // 分类页的数据接口
-// 主页的数据接口
 let cateGoryData = require('../datas/categoryDatas.json');
 router.get('/getCateGoryData', (ctx) => {
 	ctx.body = cateGoryData;
+});
+
+
+
+// 主页分类列表的数据接口
+let indexCateList = require('../datas/indexCateList.json');
+router.get('/getIndexCateListData', (ctx) => {
+	ctx.body = indexCateList;
 });
 
 

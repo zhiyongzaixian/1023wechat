@@ -104,11 +104,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/Recommend/Recommend":1,"components/indexCateGory/indexCateGory":1};
+/******/ 		var cssChunks = {"components/Recommend/Recommend":1,"components/indexCateList/indexCateList":1,"components/indexCateGory/indexCateGory":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"components/Recommend/Recommend":"components/Recommend/Recommend","components/indexCateGory/indexCateGory":"components/indexCateGory/indexCateGory"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"components/Recommend/Recommend":"components/Recommend/Recommend","components/indexCateList/indexCateList":"components/indexCateList/indexCateList","components/indexCateGory/indexCateGory":"components/indexCateGory/indexCateGory"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

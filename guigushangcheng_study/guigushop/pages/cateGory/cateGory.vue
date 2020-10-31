@@ -16,7 +16,15 @@
 			</view>
 			<view class="rightContianer">
 				<scroll-view scroll-y="true" class="rightScroll">
-					<view>222</view>
+					<view>
+						<image class='bigImg' :src="categoryItem.imgUrl" mode=""></image>
+						<view class="contentList">
+							<view class="contentItem" v-for="item in categoryItem.subCateList" :key='item.id'>
+								<image :src="item.wapBannerUrl" mode=""></image>
+								<text>{{item.name}}</text>
+							</view>
+						</view>
+					</view>
 				</scroll-view>
 			</view>
 		</view>
@@ -43,6 +51,11 @@
 			changeNavIndex(navIndex){
 				this.navIndex = navIndex
 			}
+		},
+		computed: {
+			categoryItem(){
+				return this.cateGoryList[this.navIndex]
+			}
 		}
 	}
 </script>
@@ -66,6 +79,7 @@
 			display flex
 			.leftContianer
 				width 20%
+				border-right 1rpx solid #eee
 				.leftScroll
 					height calc(100vh - 80rpx)
 					.navItem
@@ -84,7 +98,24 @@
 							background #BB2C08
 			.rightContianer
 				width 80%
-				background #4CD964
 				.rightScroll
 					height calc(100vh - 80rpx)
+					.bigImg
+						display block
+						width 520rpx
+						height 190rpx
+						margin 10rpx auto
+					.contentList
+						display flex
+						flex-wrap wrap
+						.contentItem
+							width 33.333%
+							text-align center
+							image
+								width 90%
+								height 144rpx
+							text
+								font-size 26rpx
+								height 60rpx
+								line-height 60rpx
 </style>

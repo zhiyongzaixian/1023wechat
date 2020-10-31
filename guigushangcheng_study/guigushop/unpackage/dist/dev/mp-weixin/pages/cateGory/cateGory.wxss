@@ -22,6 +22,7 @@
 }
 .cateGoryContainer .contentContainer .leftContianer {
   width: 20%;
+  border-right: 1rpx solid #eee;
 }
 .cateGoryContainer .contentContainer .leftContianer .leftScroll {
   height: calc(100vh - 80rpx);
@@ -44,9 +45,36 @@
 }
 .cateGoryContainer .contentContainer .rightContianer {
   width: 80%;
-  background: #4cd964;
 }
 .cateGoryContainer .contentContainer .rightContianer .rightScroll {
   height: calc(100vh - 80rpx);
+}
+.cateGoryContainer .contentContainer .rightContianer .rightScroll .bigImg {
+  display: block;
+  width: 520rpx;
+  height: 190rpx;
+  margin: 10rpx auto;
+}
+.cateGoryContainer .contentContainer .rightContianer .rightScroll .contentList {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.cateGoryContainer .contentContainer .rightContianer .rightScroll .contentList .contentItem {
+  width: 33.333%;
+  text-align: center;
+}
+.cateGoryContainer .contentContainer .rightContianer .rightScroll .contentList .contentItem image {
+  width: 90%;
+  height: 144rpx;
+}
+.cateGoryContainer .contentContainer .rightContianer .rightScroll .contentList .contentItem text {
+  font-size: 26rpx;
+  height: 60rpx;
+  line-height: 60rpx;
 }
 

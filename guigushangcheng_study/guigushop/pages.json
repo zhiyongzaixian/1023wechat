@@ -6,15 +6,16 @@
     },
     "pages" : [
 			{
+				"path" : "pages/index/index",
+				"style" : {}
+			},
+			{
 				"path" : "pages/cateGory/cateGory",
 				"style" : {
 					"navigationBarTitleText" : "分类"
 				}
 			},
-			{
-				"path" : "pages/index/index",
-				"style" : {}
-			},
+			
 			
 			{
 				"path" : "pages/cart/cart",
