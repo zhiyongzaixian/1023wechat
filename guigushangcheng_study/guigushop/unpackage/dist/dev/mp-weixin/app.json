@@ -1,10 +1,11 @@
 {
   "pages": [
     "pages/cart/cart",
+    "pages/personal/personal",
     "pages/index/index",
     "pages/cateGory/cateGory",
-    "pages/personal/personal",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/login/login"
   ],
   "subPackages": [],
   "window": {
@@ -42,6 +43,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap34.json"
+  "usingComponents": {}
 }

@@ -200,6 +200,10 @@ let mutations = {
 	// 修改是否选中的状态
 	changeSelecteMutation(state, {selected, index}){
 		state.cartList[index].selected = selected;
+	},
+	// 是否全选
+	changeAllSelectedMutation(state, selected){
+		state.cartList.forEach(item => item.selected = selected)
 	}
 }
 
@@ -208,7 +212,31 @@ let actions = {
 }
 
 let getters = {
-	
+	isAllSelected(state){
+		/* 
+		 every： 
+			1. 返回值是布尔值
+			2. 所有的个体都满足指定的条件，返回true
+			3. 一旦有一个为false返回值就false
+		some: 
+			1. 返回值是布尔值
+			2. 有一个满足条件返回true
+			3. 所有的都不满足条件返回false
+		 */
+		return state.cartList.every(item => item.selected)
+	},
+	// 总数量
+	totalCount(state){
+		return state.cartList.reduce((pre, shopItem) => {
+			return pre += shopItem.selected?shopItem.count:0;
+		}, 0)
+	},
+	// 总价格
+	totalPrice(state){
+		return state.cartList.reduce((pre, shopItem) => {
+			return pre += shopItem.selected?(shopItem.count * shopItem.retailPrice):0;
+		}, 0)
+	}
 }
 
 

@@ -3,60 +3,71 @@
 		<view class="title">购物车</view>
 <!-- 		<view>{{person.username}}</view>
 		<view>{{person.age}}</view> -->
-<!-- 		<view class="header">
-			<text>30天无忧退货</text>
-			<text>48小时快速退货</text>
-			<text>满99元免邮费</text>
-		</view>
-		<view class="contentContainer">
-			<image class="cartImg" src="http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/noCart-d6193bd6e4.png?imageView&type=webp" mode=""></image>
-			<button @click="toLogin">登录</button>
-			<view class="addMore">去添加点什么吧</view>
-		</view>
-		 -->
+		<block v-if="!userInfo.nickName">
+			<view class="header">
+				<text>30天无忧退货</text>
+				<text>48小时快速退货</text>
+				<text>满99元免邮费</text>
+			</view>
+			<view class="contentContainer">
+				<image class="cartImg" src="http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/noCart-d6193bd6e4.png?imageView&type=webp" mode=""></image>
+				<button @click="toLogin">登录</button>
+				<view class="addMore">去添加点什么吧</view>
+			</view>
+		</block>
+		
+		<block v-else>
+			<block v-if="cartList.length">
 				<!-- 购物车列表 -->
-		<view class="cartList">
-			<view class="cartItem" v-for="(cartItem, index) in cartList" :key='cartItem.id'>
-				<text class='iconfont icon-xuanzhong ' :class="{selected: cartItem.selected}" @click="changeSelected(!cartItem.selected, index)"></text>
-				<view class="shopItem">
-					<image class="shopImg" :src="cartItem.listPicUrl" mode=""></image>
-					<view class="shopInfo">
-						<text>{{cartItem.name}}</text>
-						<text class="price">￥{{cartItem.retailPrice}}</text>
+				<view class="cartList">
+					<view class="cartItem" v-for="(cartItem, index) in cartList" :key='cartItem.id'>
+						<text class='iconfont icon-xuanzhong ' :class="{selected: cartItem.selected}" @click="changeSelected(!cartItem.selected, index)"></text>
+						<view class="shopItem">
+							<image class="shopImg" :src="cartItem.listPicUrl" mode=""></image>
+							<view class="shopInfo">
+								<text>{{cartItem.name}}</text>
+								<text class="price">￥{{cartItem.retailPrice}}</text>
+							</view>
+						</view>
+						<!-- 控制数量 -->
+						<view class="countCtrl">
+							<text class="add" @click="changeShopCount(true, index)"> + </text>
+							<text class="count"> {{cartItem.count}} </text>
+							<text class="del" @click="changeShopCount(false, index)"> - </text>
+						</view>
 					</view>
 				</view>
-				<!-- 控制数量 -->
-				<view class="countCtrl">
-					<text class="add" @click="changeShopCount(true, index)"> + </text>
-					<text class="count"> {{cartItem.count}} </text>
-					<text class="del" @click="changeShopCount(false, index)"> - </text>
+				<!-- 底部下单 -->
+				<view class="cartFooter">
+					<text class='iconfont icon-xuanzhong ' :class="{selected: isAllSelected}" @click="changeAllSelected(!isAllSelected)"></text>
+					<text class="allSelected">已选 {{totalCount}}</text>
+					<view class="right">
+						<text class="totalPrice">合计: ￥{{totalPrice}}</text>
+						<text class="preOrder">下单</text>
+					</view>
 				</view>
-			</view>
-		</view>
-		<!-- 底部下单 -->
-		<view class="cartFooter">
-			<text class='iconfont icon-xuanzhong selected'></text>
-			<text class="allSelected">已选 1</text>
-			<view class="right">
-				<text class="totalPrice">合计: ￥111</text>
-				<text class="preOrder">下单</text>
-			</view>
-		</view>
 				
-	<!-- <image class="cartImg" src="http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/noCart-d6193bd6e4.png?imageView&type=webp" mode=""></image>
-			<view class="hint">购物车还是空的，赶紧去购物吧</view>
-	 -->
+			</block>		
+			
+			<block v-else>
+				<image class="cartImg" src="http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/noCart-d6193bd6e4.png?imageView&type=webp" mode=""></image>
+				<view class="hint">购物车还是空的，赶紧去购物吧</view>
+			</block>
+			
+		</block>
+	
 	</view>
 </template>
 
 <script>
-	import {mapState, mapMutations} from 'vuex'
+	import {mapState, mapMutations, mapGetters} from 'vuex'
 	export default {
 		data() {
 			return {
 				person: {
 					username: 'wade'
-				}
+				},
+				userInfo: {},
 			};
 		},
 		mounted() {
@@ -64,16 +75,23 @@
 			// 	// this.person.username = 'curry'
 			// 	this.person.age = 333
 			// }, 2000)
+			wx.getUserInfo({
+				success: (res) => {
+					this.userInfo = res.userInfo
+				}
+			})
 		},
 		computed: {
 			...mapState({
 				cartList: state => state.cartModule.cartList
-			})
+			}),
+			...mapGetters(['isAllSelected', 'totalCount', 'totalPrice'])
 		},
 		methods: {
 			...mapMutations({
 				changeCountMutation: 'changeCountMutation',
 				changeSelecteMutation: 'changeSelecteMutation',
+				changeAllSelectedMutation: 'changeAllSelectedMutation',
 			}),
 			// 修改数量的回调
 			changeShopCount(isAdd, index){
@@ -83,6 +101,16 @@
 			// 点击修改是否选中状态的回调
 			changeSelected(selected, index){
 				this.changeSelecteMutation({selected, index});
+			},
+			// 点击修改是否全选的回调
+			changeAllSelected(isAllSelected){
+				this.changeAllSelectedMutation(isAllSelected);
+			},
+			// 跳转至登录界面
+			toLogin(){
+				wx.navigateTo({
+					url: '/pages/login/login'
+				})
 			}
 		}
 	}
