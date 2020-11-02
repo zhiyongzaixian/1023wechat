@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="header">
-			<image class="userImg" src="../../static/images/personal/personal.png" mode=""></image>
+			<image class="userImg" src="../../static/images/personal/personal.png" mode="" @click="getUserInfoTest"></image>
 			<div class='userInfo' @click='toLogin'>
 				<p>{{userInfo.nickName?userInfo.nickName:'未登录'}}</p>
 			</div>
@@ -109,8 +109,12 @@
 					console.log(res)
 					let code = res.code;
 					// 2. 将code发送请求给自己的服务器
-					let result = await request('/getOpenId', {code});
-					console.log(result);
+					let token = await request('/getOpenId', {code});
+					// 3. 将用户的登录态存放至本地
+					wx.setStorage({
+						key: 'token',
+						data: token
+					})
 				}
 			})
 		},
@@ -119,6 +123,12 @@
 				wx.navigateTo({
 					url: '/pages/login/login'
 				})
+			},
+			// 测试验证用户身份
+			async getUserInfoTest(){
+				let token = wx.getStorageSync('token');
+				let result = await request('/getUserInfo', {token});
+				console.log(result)
 			}
 		},
 	}

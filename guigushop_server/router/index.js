@@ -1,6 +1,7 @@
 const KoaRouter = require('koa-router');
 const Fly=require("flyio/src/node")
 const fly=new Fly;
+const jwt = require('jsonwebtoken');
 // 生成路由器
 const router = new KoaRouter();
 
@@ -61,10 +62,31 @@ router.get('/getOpenId', async (ctx) => {
 		openId
 	}
 	// 2.4 对原数据进行加密
-	
+	let token = jwt.sign(openId, 'atguigu');
 	
 	// 3. 返回响应数据
-	ctx.body = '返回的假数据'
+	ctx.body = token;
 });
+
+
+// 测试验证用户身份的接口
+router.get('/getUserInfo', (ctx) => {
+	let token = ctx.query.token;
+	if(!token){
+		ctx.body = {
+			code: 502,
+			data: '用户信息不正确'
+		}
+		return;
+	}
+	
+	// 对token进行解密验证身份
+	// let person = jwt.verify(token); //  没有密钥： secret or public key must be provided
+	// let person = jwt.verify(token, 'test');  // 错误的密钥： invalid signature
+	// let person = jwt.verify(token, 'atguigu'); 
+	let tokenResult = jwt.verify(token, 'atguigu'); 
+	ctx.body = '返回的假数据';
+});
+
 
 module.exports = router;
